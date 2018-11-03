@@ -32,10 +32,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 # Dalvik VM specific for devices with 2048 MB of RAM
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# Time Zone data for recovery
-PRODUCT_COPY_FILES += \
-    bionic/libc/zoneinfo/tzdata:$(TWRP_OUT)/system/usr/share/zoneinfo/tzdata
-
 # Display properties
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=480
@@ -43,9 +39,3 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # USB properties
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.usb.pid_suffix=1DB
-
-# Default.prop overrides to get adb working at boot
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.debuggable=1
